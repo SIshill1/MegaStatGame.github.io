@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GameTracker 🎮 - Твой стильный трекер игр</title>
+    <meta name="description" content="Современный трекер для отслеживания прогресса в видеоиграх">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎮 GameTracker</h1>
+            <p>Отслеживай свой игровой прогресс в стильном окружении</p>
+        </header>
+
+        <div class="add-game-form glass-card">
+            <h2>✨ Добавить новую игру</h2>
+            <form id="gameForm">
+                <div class="form-group">
+                    <label for="gameName">Название игры</label>
+                    <input type="text" id="gameName" placeholder="Например: Cyberpunk 2077" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="gameStatus">Статус</label>
+                    <select id="gameStatus">
+                        <option value="not-started">❌ Не начата</option>
+                        <option value="in-progress">🟡 В процессе</option>
+                        <option value="completed">✅ Завершена</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="startDate">Дата начала</label>
+                    <input type="date" id="startDate">
+                </div>
+
+                <div class="form-group">
+                    <label for="endDate">Дата окончания</label>
+                    <input type="date" id="endDate">
+                </div>
+
+                <button type="submit" class="btn">🎯 Добавить игру</button>
+            </form>
+        </div>
+
+        <div class="filters">
+            <button class="filter-btn active" data-filter="all">🎮 Все игры</button>
+            <button class="filter-btn" data-filter="completed">✅ Завершенные</button>
+            <button class="filter-btn" data-filter="in-progress">🟡 В процессе</button>
+            <button class="filter-btn" data-filter="not-started">❌ Не начатые</button>
+        </div>
+
+        <div class="games-list glass-card">
+            <table id="gamesTable">
+                <thead>
+                    <tr>
+                        <th>Игра</th>
+                        <th>Статус</th>
+                        <th>Начало</th>
+                        <th>Завершение</th>
+                        <th>Действия</th>
+                    </tr>
+                </thead>
+                <tbody id="gamesBody">
+                    <!-- Игры будут добавляться сюда -->
+                </tbody>
+            </table>
+        </div>
+
+        <div class="stats glass-card">
+            <h3>📊 Статистика прогресса</h3>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <span class="stat-number" id="totalGames">0</span>
+                    <span class="stat-label">Всего игр в библиотеке</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number" id="completedGames">0</span>
+                    <span class="stat-label">Игр завершено</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number" id="inProgressGames">0</span>
+                    <span class="stat-label">В процессе прохождения</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number" id="notStartedGames">0</span>
+                    <span class="stat-label">Ожидают своего часа</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Модальное окно для редактирования -->
+    <div id="editModal" class="modal">
+        <div class="modal-content glass-card">
+            <span class="close">&times;</span>
+            <h2>✏️ Редактировать игру</h2>
+            <form id="editForm">
+                <input type="hidden" id="editId">
+
+                <div class="form-group">
+                    <label for="editName">Название игры</label>
+                    <input type="text" id="editName" placeholder="Название игры" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="editStatus">Статус</label>
+                    <select id="editStatus">
+                        <option value="not-started">❌ Не начата</option>
+                        <option value="in-progress">🟡 В процессе</option>
+                        <option value="completed">✅ Завершена</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="editStartDate">Дата начала</label>
+                    <input type="date" id="editStartDate">
+                </div>
+
+                <div class="form-group">
+                    <label for="editEndDate">Дата окончания</label>
+                    <input type="date" id="editEndDate">
+                </div>
+
+                <button type="submit" class="btn">💾 Сохранить изменения</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
